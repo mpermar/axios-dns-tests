@@ -1,0 +1,18 @@
+name: network-test
+
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  network-test:
+    name: Network test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Network test
+        id: network-test
+
+        run: |
+          echo Running network test...
+          node index.js

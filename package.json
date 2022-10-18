@@ -1,0 +1,18 @@
+{
+  "name": "axios-test",
+  "version": "0.4.6",
+  "private": true,
+  "description": "VMware Image Builder GitHub Action",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "axios-cached-dns-resolve": "^3.2.2",
+    "json-stringify-safe": "^5.0.1",
+    "lru-cache": "^7.14.0",
+    "moment": "^2.29.4",
+    "pino": "^8.6.1"
+  }
+}
