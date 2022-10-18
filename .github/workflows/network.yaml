@@ -9,11 +9,16 @@ jobs:
     name: Network test
     runs-on: ubuntu-latest
 
+    env:
+      ENABLE_CACHING: false
+      RUNS: 1000
+      DELAY: 500
+
     steps:
       - uses: actions/checkout@v3
       - name: Network test
         id: network-test
-
+        
         run: |
           echo Running network test...
           npm install

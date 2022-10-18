@@ -286,10 +286,24 @@ instance.interceptors.response.use(undefined, async (err) => {
 
 init()
 
-registerInterceptor(instance)
+let cachingEnabled = process.env.ENABLE_CACHING == 'true' || false
+
+if (cachingEnabled) {
+    console.log("Running with DNS caching enabled")
+    registerInterceptor(instance)
+} else {
+    console.log("Running with DNS caching disabled")
+    instance.interceptors.request.use(async (reqConfig) => {
+        reqConfig.metadata = { startTime: new Date()}
+        return reqConfig
+      })    
+}
+
+let runs = process.env.RUNS || 1000
+let delay = process.env.DELAY || 1000
 
 let i
-for (i=0;i<1000;i++) {
+for (i=0;i<runs;i++) {
     try {
         const response = await instance.get(`/v1/execution-graphs/aaa`, { // does not matter. We are interested in the HTTP response
         })
@@ -314,6 +328,7 @@ for (i=0;i<1000;i++) {
             throw err
         }
     }
+    await new Promise(resolve => setTimeout(resolve, delay));
 }
 
 process.exit(1)
