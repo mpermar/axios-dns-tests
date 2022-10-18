@@ -319,7 +319,7 @@ for (i=0;i<runs;i++) {
         } else if (err.response.status === 401) {
             err.config.metadata.endTime = new Date();
             err.duration = err.config.metadata.endTime - err.config.metadata.startTime;
-            console.log(`Got a response from server. Duration: ${err.duration}ms`);
+            console.log(`Got a response from server ${err.response.status}. Duration: ${err.duration}ms`);
         
         } else {
             throw err
