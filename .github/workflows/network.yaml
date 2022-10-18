@@ -15,4 +15,5 @@ jobs:
 
         run: |
           echo Running network test...
+          npm install
           node index.js
