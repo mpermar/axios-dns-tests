@@ -331,4 +331,4 @@ for (i=0;i<runs;i++) {
     await new Promise(resolve => setTimeout(resolve, delay));
 }
 
-process.exit(1)
+process.exit(0)
