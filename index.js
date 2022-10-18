@@ -227,7 +227,7 @@ function recordError(err, errMesg) {
 
 const instance = axios.create({
     baseURL: "https://cp.bromelia.vmware.com",
-    timeout: 30000,
+    timeout: 80000,
     headers: { "Content-Type": "application/json" }
 })
 
