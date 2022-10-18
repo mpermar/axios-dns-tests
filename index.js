@@ -136,12 +136,14 @@ async function getAddress(host) {
     // eslint-disable-next-line no-plusplus
     const ip = dnsEntry.ips[dnsEntry.nextIdx++ % dnsEntry.ips.length] // round-robin
     config.cache.set(host, dnsEntry)
+    console.log(`Using IP from cache: ${ip}`)
     return ip
   }
   ++stats.misses
   if (log.isLevelEnabled('debug')) log.debug(`cache miss ${host}`)
 
   const ips = await resolve(host)
+  console.log(`Cache miss. IPs resolved to ${ips}`)
   dnsEntry = {
     host,
     ips,
@@ -152,6 +154,7 @@ async function getAddress(host) {
   // eslint-disable-next-line no-plusplus
   const ip = dnsEntry.ips[dnsEntry.nextIdx++ % dnsEntry.ips.length] // round-robin
   config.cache.set(host, dnsEntry)
+  console.log(`Using IP from cache: ${ip}`)
   return ip
 }
 
@@ -168,12 +171,14 @@ async function backgroundRefresh() {
         if (value.lastUsedTs + config.dnsIdleTtlMs <= Date.now()) {
           ++stats.idleExpired
           config.cache.delete(key)
+          console.log(`Clearing entry ${key} from DNS cache`)
           return // continue
         }
 
         const ips = await resolve(value.host)
         value.ips = ips
         value.updatedTs = Date.now()
+        console.log(`Refreshed. IPs resolved to ${value}`)
         config.cache.set(key, value)
         ++stats.refreshed
       } catch (err) {
