@@ -236,7 +236,7 @@ function recordError(err, errMesg) {
 const instance = axios.create({
     baseURL: "https://cp.bromelia.vmware.com",
     timeout: 8000,
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json", "User-Agent":"vib-action/0.4.6" }
 })
 
 instance.interceptors.response.use(undefined, async (err) => {
