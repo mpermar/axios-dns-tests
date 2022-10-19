@@ -10,7 +10,7 @@ jobs:
     env:
       ENABLE_CACHING: false
       RUNS: 1000
-      DELAY: 5000
+      DELAY: 500
 
     steps:
       - uses: actions/checkout@v3
