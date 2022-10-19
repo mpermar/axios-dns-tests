@@ -1,4 +1,5 @@
 import axios from 'axios'
+import consoleStamp from 'console-stamp'
 import dns from 'dns'
 import URL from 'url'
 import net from 'net'
@@ -6,6 +7,8 @@ import stringify from 'json-stringify-safe'
 import LRUCache from 'lru-cache'
 import util from 'util'
 import { init as initLogger } from './logging.js'
+
+consoleStamp(console, 'HH:MM:ss.l');
 
 const dnsResolve = util.promisify(dns.resolve)
 const dnsLookup = util.promisify(dns.lookup)
@@ -232,7 +235,7 @@ function recordError(err, errMesg) {
 
 const instance = axios.create({
     baseURL: "https://cp.bromelia.vmware.com",
-    timeout: 80000,
+    timeout: 8000,
     headers: { "Content-Type": "application/json" }
 })
 

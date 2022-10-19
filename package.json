@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "axios-cached-dns-resolve": "^3.2.2",
+    "console-stamp": "^3.0.6",
     "json-stringify-safe": "^5.0.1",
     "lru-cache": "^7.14.0",
     "moment": "^2.29.4",

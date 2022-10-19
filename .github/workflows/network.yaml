@@ -1,6 +1,4 @@
 name: network-test
-
-
 on: 
   workflow_dispatch:
 
