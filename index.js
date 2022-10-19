@@ -236,7 +236,7 @@ function recordError(err, errMesg) {
 const instance = axios.create({
     baseURL: "https://cp.bromelia.vmware.com",
     timeout: 8000,
-    headers: { "Content-Type": "application/json", "User-Agent":"vib-action/0.4.6" }
+    headers: { "Content-Type": "application/json", "User-Agent":"curl/7.68.0" }
 })
 
 instance.interceptors.response.use(undefined, async (err) => {
@@ -313,7 +313,7 @@ let delay = process.env.DELAY || 1000
 let i
 for (i=0;i<runs;i++) {
     try {
-        const response = await instance.get(`/v1/execution-graphs/aaa`, { // does not matter. We are interested in the HTTP response
+        const response = await instance.get(`/v1/actions`, { // does not matter. We are interested in the HTTP response
         })
         console.log("Got a response!!")
     } catch (err) {
